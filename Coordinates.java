@@ -23,4 +23,8 @@ public class Coordinates {
     public void setyCoord(int yCoord) {
         this.yCoord = yCoord;
     }
+
+    public double calculateDistance (Coordinates otherCoordinates){
+
+    }
 }
