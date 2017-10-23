@@ -1,3 +1,6 @@
+/**
+ * Represents rating for an uber driver
+ */
 public class Rating {
 
     private double totalStars;
@@ -8,8 +11,11 @@ public class Rating {
         this.totalRates = rates;
     }
 
+    /**
+     *
+     * @return Driver rating based off total stars and total rates
+     */
     public double calculateRating(){
-        //System.out.println(totalStars/totalRates);
         return totalStars/totalRates;
     }
 

@@ -1,15 +1,15 @@
 import java.util.Timer;
 import java.util.TimerTask;
 
-/**
- * Simple demo that uses java.util.Timer to schedule a task
- * to execute once 5 seconds have passed.
- */
-
 public class DestinationTimer {
     Timer timer;
     Trip trip;
 
+    /**
+     *
+     * @param seconds The number of seconds from passenger pickup to destination arrival
+     * @param trip The trip object which we are simulating
+     */
     public DestinationTimer(int seconds, Trip trip) {
         timer = new Timer();
         this.trip = trip;

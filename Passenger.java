@@ -6,7 +6,14 @@ public class Passenger {
     private double balance;
     private Coordinates coordinates;
 
-
+    /**
+     *
+     * @param name Passenger name
+     * @param balance Starting balance
+     * @param x Starting x position
+     * @param y Starting y position
+     * @param map Map that the passenger is bound to
+     */
     public Passenger(String name, double balance, int x, int y, Map map) {
         this.name = name;
         this.balance = balance;
@@ -40,11 +47,24 @@ public class Passenger {
         this.balance = balance;
     }
 
+    /**
+     *
+     * @param cost The ride fare
+     * @param other Driver you want to pay
+     * @return The new balance of the passenger, after payment has been made.
+     */
     public double pay(double cost, Driver other) {
         this.balance -= cost;
         other.setBalance(other.getBalance() + (cost*.8));
         return this.getBalance();
     }
+
+    /**
+     *
+     * @param destination The destination you want to go to.
+     * @param map The map which contains the list of drivers and passengers
+     * @return The trip object containing the specifics of the passengers request
+     */
     public Trip requestRide(Coordinates destination, Map map) {
         int surchage = 3;
         if ((destination.getxCoord() > 299 || destination.getxCoord() < 0) || (destination.getyCoord() > 299 || destination.getyCoord() < 0)){
@@ -67,7 +87,6 @@ public class Passenger {
             passengerTrip.setSuccess(false);
             passengerTrip.getDriver().setOccupied(false);
             TripLogger tripLogger = new TripLogger(passengerTrip);
-            map.tripList.add(passengerTrip);
             return null;
         }
         this.pay(cost, assignedDriver);
@@ -75,6 +94,12 @@ public class Passenger {
         return passengerTrip;
     }
 
+    /**
+     *
+     * @param driver Driver you wish to rate
+     * @param stars Number of stars you wish to give the driver
+     * @return The new, calculated rating of the driver. Based off total starts/total rates
+     */
     public double rateDriver(Driver driver, int stars) {
         driver.getRating().setTotalStars(driver.getRating().getTotalStars() + stars);
         driver.getRating().setTotalRates(driver.getRating().getTotalRates()+1);

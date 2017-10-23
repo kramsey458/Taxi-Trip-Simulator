@@ -7,6 +7,16 @@ public class Driver extends Passenger{
     private Rating rating;
     private double rank;
 
+    /**
+     *
+     * @param name Driver name
+     * @param balance Starting balance
+     * @param x Starting x
+     * @param y Starting y
+     * @param CarTitle Name of drivers car
+     * @param occupied Is driver available for uber rides?
+     * @param map Map driver is bound to
+     */
     public Driver(String name, double balance, int x, int y, String CarTitle, boolean occupied, Map map){
         super(name, balance, x, y,map);
         this.carTitle = CarTitle;

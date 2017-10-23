@@ -4,7 +4,9 @@ import java.io.IOException;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.json.simple.JSONObject;
-
+/**
+ * Logs each individual trip in the "tripLog+passengerName" format. Creates a file for each trip simulated.
+ */
 public class TripLogger {
 
     private double fare;
@@ -19,7 +21,6 @@ public class TripLogger {
     JSONObject tripLog;
 
     @SuppressWarnings("unchecked")
-
     public TripLogger(Trip trip) {
         this.trip = trip;
         tripLog = new JSONObject();

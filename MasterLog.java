@@ -24,7 +24,9 @@ public class MasterLog {
     public ArrayList<Trip> tripList;
 
     @SuppressWarnings("unchecked")
-
+    /**
+     * Writes a master log in jSON for the entire trip based on the passed tripList
+     */
     public MasterLog(ArrayList<Trip> tripList) {
         this.tripList = tripList;
         this.trip = trip;

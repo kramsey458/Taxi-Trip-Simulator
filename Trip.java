@@ -1,3 +1,6 @@
+/**
+ * Represents to contents of an uber trip. Including driver, passenger, and destination
+ */
 public class Trip {
 
     Coordinates destination;
@@ -13,6 +16,15 @@ public class Trip {
     private boolean success;
     private double surchage;
 
+    /**
+     *
+     * @param destination Target destination for passenger
+     * @param driver Driver assigned to passenger
+     * @param passenger Passenger requesting trip
+     * @param passengerRequest Special requests from the passenger. Could be implemented in uberEats
+     * @param tripStart Starting destination for the trip
+     * @param surchage Additional surcharge cost added to trip fare
+     */
     public Trip(Coordinates destination, Driver driver, Passenger passenger, String passengerRequest, Coordinates tripStart, double surchage) {
         this.destination = destination;
         this.driver = driver;
@@ -26,11 +38,15 @@ public class Trip {
         this.surchage = surchage;
     }
 
+    /**
+     *
+     * @param surchage Fixed amount to add to trip cost. Useful for uberEats implementation
+     * @return Cost calculated from ride distance
+     */
     public double calculateCost(double surchage){
         double pickupDistance = Math.abs(driver.getCoordinates().calculateDistance(passenger.getCoordinates()));
         double rideDistance = Math.abs(passenger.getCoordinates().calculateDistance(destination));
         double cost = ((pickupDistance + rideDistance) * .06)+surchage;
-        //System.out.println("cost: :"+(cost));
         fare = cost;
         return cost;
     }
@@ -43,11 +59,19 @@ public class Trip {
         this.tripStart = tripStart;
     }
 
+    /**
+     *
+     * @return Time for driver to arrive to passenger. Based off pickup distance.
+     */
     public int calculateArrivalTime(){
         double pickupDistance = Math.abs(driver.getCoordinates().calculateDistance(passenger.getCoordinates()));
         return (int)((pickupDistance * .02) + 1);
     }
 
+    /**
+     *
+     * @return Time for driver to arrive to destination. Based off calculated ride distance
+     */
     public int calculateDestinationTime(){
         double rideDistance = Math.abs(passenger.getCoordinates().calculateDistance(destination));
         return (int)((rideDistance * .02));

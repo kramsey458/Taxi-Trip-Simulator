@@ -1,7 +1,12 @@
 import java.util.*;
 
 public class DriverComparator implements Comparator<Driver> {
-
+    /**
+     *
+     * @param driver
+     * @param otherDriver
+     * @return Whichever driver has to the lowest rank (distance from passenger)
+     */
     @Override
     public int compare(Driver driver, Driver otherDriver)
     {
