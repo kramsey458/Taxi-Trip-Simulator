@@ -1,6 +1,9 @@
 import java.util.Timer;
 import java.util.TimerTask;
 
+/**
+ * Simulates time for driver to arrive to passenger for pickup
+ */
 public class ArrivalTimer {
     Timer timer;
     Trip trip;
