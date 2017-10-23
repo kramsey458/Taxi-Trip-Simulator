@@ -98,7 +98,7 @@ public class MasterLog {
                 numSuccessful++;
             }
         }
-        j.put("Number of transactions", numSuccessful);
+        j.put("Number of transactions ", numSuccessful);
     }
 
     public void writeRatings(JSONObject j){
