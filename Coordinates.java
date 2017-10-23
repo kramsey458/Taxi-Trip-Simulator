@@ -24,7 +24,20 @@ public class Coordinates {
         this.yCoord = yCoord;
     }
 
-    public double calculateDistance (Coordinates otherCoordinates){
+    public String toString() {
+        return xCoord + "," + yCoord;
+    }
 
+    /**
+     *
+     * @param otherCoordinates Coordinates that you wish to compare to
+     * @return Distance between two coordinates
+     */
+    public double calculateDistance (Coordinates otherCoordinates){
+        double otherX = otherCoordinates.getxCoord();
+        double otherY = otherCoordinates.getyCoord();
+        double X = this.xCoord;
+        double Y = this.yCoord;
+        return Math.sqrt((Math.pow((otherX-X), 2)) + (Math.pow((otherY-Y), 2)));
     }
 }

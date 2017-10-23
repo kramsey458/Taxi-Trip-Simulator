@@ -13,17 +13,17 @@ public class DestinationTimer {
     public DestinationTimer(int seconds, Trip trip) {
         timer = new Timer();
         this.trip = trip;
-        timer.schedule(new RemindTask(), seconds * 1000);
+        timer.schedule(new DestinationArrived(), seconds * 100);
     }
 
-    class RemindTask extends TimerTask {
+    class DestinationArrived extends TimerTask {
         public void run() {
-            //System.out.println("Time's up!");
             trip.getPassenger().setCoordinates(trip.destination);
             trip.getDriver().setCoordinates(trip.destination);
-            System.out.println("Arrived at destination");
-            System.out.println(trip.getPassenger().getName() + " is at x: " + trip.getPassenger().coordinates.getxCoord() + ", y: " + trip.getPassenger().coordinates.getyCoord());
-            timer.cancel(); //Terminate the timer thread
+            trip.getPassenger().rateDriver(trip.getDriver(), 5);
+            trip.setSuccess(true);
+            TripLogger tripLogger = new TripLogger(trip);
+            timer.cancel();
         }
     }
 }

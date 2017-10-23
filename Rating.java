@@ -1,7 +1,7 @@
 public class Rating {
 
-    double totalStars;
-    double totalRates;
+    private double totalStars;
+    private double totalRates;
 
     public Rating(int stars, int rates) {
         this.totalStars = stars;
@@ -9,6 +9,7 @@ public class Rating {
     }
 
     public double calculateRating(){
+        //System.out.println(totalStars/totalRates);
         return totalStars/totalRates;
     }
 
